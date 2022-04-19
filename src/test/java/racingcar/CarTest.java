@@ -21,6 +21,12 @@ public class CarTest {
     }
 
     @Test
+    public void validateInputNameTest() {
+        boolean result = CarName.validateName();
+        assertTrue(result);
+    }
+
+    @Test
     public void isMoveTest() {
         CarStatus carStatus = car.move(new Car("B", 5));
         assertEquals(carStatus, CarStatus.MOVE);
