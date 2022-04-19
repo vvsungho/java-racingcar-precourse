@@ -4,9 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarTest {
-
     private Car car;
 
     @BeforeEach
@@ -15,8 +15,14 @@ public class CarTest {
     }
 
     @Test
-    public void 입력값_검증() {
+    public void validateInputNumber() {
         boolean result = CarNumber.validateNumber(0);
-        assertEquals(result, true);
+        assertTrue(result);
+    }
+
+    @Test
+    public void isMoveTest() {
+        CarStatus carStatus = car.move(new Car("B", 5));
+        assertEquals(carStatus, CarStatus.MOVE);
     }
 }
