@@ -1,9 +1,12 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
-    public static final int MOVE_MINIMUM_VALUE = 5;
+    public static final int MOVE_MINIMUM_VALUE = 4;
     private String name;
     private int distance;
+
+    public Car() {
+    }
 
     public Car(String name, int distance) {
         this.name = name;
