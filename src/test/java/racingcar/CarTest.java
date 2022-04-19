@@ -15,7 +15,7 @@ public class CarTest {
     }
 
     @Test
-    public void validateInputNumber() {
+    public void validateInputNumberTest() {
         boolean result = CarNumber.validateNumber(0);
         assertTrue(result);
     }
@@ -23,6 +23,12 @@ public class CarTest {
     @Test
     public void isMoveTest() {
         CarStatus carStatus = car.move(new Car("B", 5));
+        assertEquals(carStatus, CarStatus.MOVE);
+    }
+
+    @Test
+    public void isStopTest() {
+        CarStatus carStatus = car.move(new Car("C", 0));
         assertEquals(carStatus, CarStatus.MOVE);
     }
 }
