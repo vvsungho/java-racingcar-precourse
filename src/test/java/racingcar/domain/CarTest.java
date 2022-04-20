@@ -1,33 +1,15 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.CarNames;
-import racingcar.domain.CarNumber;
-import racingcar.domain.CarStatus;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarTest {
-    private Car car;
-    private CarNumber carNumber;
-    private CarNames carNames;
-
-    @BeforeEach
-    public void setUp() {
-        car = new Car("A", 1);
-        carNumber = new CarNumber(5);
-        carNames = new CarNames("yoond,eundo,minbo");
-    }
-
     @Test
     public void validateInputNumberThrowTest() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> carNumber.validateNumber(10)
+                () -> new CarNumber("10")
         );
     }
 
@@ -35,19 +17,38 @@ public class CarTest {
     public void validateInputNameThrowTest() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> carNames.validateNames(carNames.getNames())
+                () -> Cars.createCars("AAAAA,BBBBBBB")
         );
     }
 
     @Test
     public void isMoveTest() {
-        CarStatus carStatus = car.move(new Car("B", 5));
-        assertEquals(carStatus, CarStatus.MOVE);
+        Car car = Car.createCar("A");
+        boolean result = car.matchMove(5);
+        assertTrue(result);
     }
 
     @Test
     public void isStopTest() {
-        CarStatus carStatus = car.move(new Car("C", 0));
-        assertEquals(carStatus, CarStatus.MOVE);
+        Car car = Car.createCar("A");
+        boolean result = car.matchMove(3);
+        assertFalse(result);
+    }
+
+    @Test
+    public void validateInputTryNumberTest() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CarNumber("10")
+        );
+    }
+
+    @Test
+    void testMethod() {
+        // given
+
+        // when
+
+        // then
     }
 }
