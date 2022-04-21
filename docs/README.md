@@ -1,4 +1,5 @@
 # 기능 요구사항
+
 <details>
     <summary>자세히</summary>
 
@@ -19,14 +20,44 @@
     • 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
     
     • Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
+
 </details>
 
 ---
+
+# 개발상의 제약사항
+
+<details>
+    <summary>자세히</summary>
+     • stream api 사용 금지
+     • else 예약어 금지
+     • indent depth는 2이상 금지
+     • 함수에 구현된 내용 10라인 초과 금지
+</details>
+
+---
+
 # 구현할 기능 목록
+
 - [x]~~사용자 입력값 검증~~
+
 - [x]~~자동차 전진~~
+
 - [x]~~자동차 멈춤~~
+
 - 자동차 이름 부여
 - 자동차 이름 조회
 - 랜덤 숫자 조회
 - 경주게임 우승자 조회
+
+---
+
+# Domain 설계
+
+- CarName:
+- CarNumber:
+- Car:
+- Cars:
+- RacingGame:
+
+
