@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingGameTest {
     public static final String COLON = ":";
+    public static final String COMMA = ",";
     private RacingGame racingGame;
 
     @BeforeEach
@@ -23,7 +24,7 @@ public class RacingGameTest {
     @CsvSource(value = {"9,1,2:yoon", "5,5,1:yoon,lee", "5,5,5:yoon,lee,kim"}, delimiter = ':')
     void validateWinnerNamesTest(String input, String expected) {
         // given
-        String[] splitCarNumber = input.split(COLON)[0].split(",");
+        String[] splitCarNumber = input.split(COLON)[0].split(COMMA);
         List<Car> resultCar = racingGame.getResult().getCars();
 
         // when
@@ -32,7 +33,7 @@ public class RacingGameTest {
             car.move(Integer.parseInt(splitCarNumber[i]));
         }
         String result = Cars.getWinnerNames(racingGame.getResult().getWinnerCars());
-        
+
         // then
         assertEquals(expected, result);
     }
