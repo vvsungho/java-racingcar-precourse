@@ -4,25 +4,29 @@ public class Car {
     public static final int MOVE_MINIMUM_VALUE = 4;
     public static final int CAR_DISTANCE_INIT_VALUE = 0;
 
-    private final CarName carName;
-    private final CarDistance carDistance;
+    private String name;
+    private int distance;
 
-    public Car(CarName carName, CarDistance carDistance) {
-        this.carName = carName;
-        this.carDistance = carDistance;
+    public Car(String name, int distance) {
+        this.name = name;
+        this.distance = distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 
     public static Car createCar(String name) {
-        return new Car(new CarName(name), new CarDistance(CAR_DISTANCE_INIT_VALUE));
-    }
-
-    public CarDistance getCarDistance() {
-        return carDistance;
+        return new Car(name, CAR_DISTANCE_INIT_VALUE);
     }
 
     public void move(int number) {
         if (matchMove(number)) {
-            carDistance.increaseDistance();
+            this.distance++;
         }
     }
 

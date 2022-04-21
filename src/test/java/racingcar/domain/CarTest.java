@@ -42,13 +42,4 @@ public class CarTest {
                 () -> new CarNumber("10")
         );
     }
-
-    @Test
-    void testMethod() {
-        // given
-
-        // when
-
-        // then
-    }
 }
