@@ -5,8 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class CommonUtils {
     public static final String COMMA = ",";
-    public static final int MIN_VALUE = 0;
-    public static final int MAX_VALUE = 9;
 
     public static boolean isNullOrEmptyString(String str) {
         return str == null || str == "";
@@ -17,6 +15,6 @@ public class CommonUtils {
     }
 
     public static int getRandomNumber(int startNumber, int endNumber) {
-        return Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+        return Randoms.pickNumberInRange(startNumber, endNumber);
     }
 }

@@ -14,6 +14,10 @@ public class Cars {
         this.cars = cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public static Cars createCars(String names) {
         String[] splitNames = getSplitNames(names);
         return new Cars(mapCar(splitNames));
