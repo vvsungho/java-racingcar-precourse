@@ -1,21 +1,21 @@
 package racingcar.domain;
 
+import racingcar.constant.CarConstant;
+import racingcar.constant.Message;
 import racingcar.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    public static final String COMMA = ",";
+    private List<Car> carItems;
 
-    private List<Car> cars;
-
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<Car> carItems) {
+        this.carItems = carItems;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Car> getCarItems() {
+        return carItems;
     }
 
     public static Cars createCars(String names) {
@@ -24,22 +24,21 @@ public class Cars {
     }
 
     private static List<Car> mapCar(String[] splitNames) {
-        List<Car> cars = new ArrayList<>();
+        List<Car> carItems = new ArrayList<>();
         for (String name : splitNames) {
-            cars.add(Car.createCar(name));
+            carItems.add(Car.createCar(name));
         }
-        return cars;
+        return carItems;
     }
 
     private static String[] getSplitNames(String names) {
-        CommonUtils.isNullOrEmptyString(names);
-        return names.split(COMMA);
+        return names.split(Message.COMMA);
     }
 
     public Cars getWinnerCars() {
         List<Car> winnerCar = new ArrayList<>();
         int maxDistance = getMaxDistance();
-        for (Car car : cars) {
+        for (Car car : carItems) {
             addWinnerCar(winnerCar, car, maxDistance);
         }
         return new Cars(winnerCar);
@@ -47,7 +46,7 @@ public class Cars {
 
     private int getMaxDistance() {
         int max = 0;
-        for (Car car : cars) {
+        for (Car car : carItems) {
             max = CommonUtils.isGreaterThanNumber(car.getDistance(), max) ? car.getDistance() : max;
         }
         return max;
@@ -65,9 +64,19 @@ public class Cars {
 
     public static String getWinnerNames(Cars winnerCars) {
         List<String> winnerNames = new ArrayList<>();
-        for (Car car : winnerCars.getCars()) {
+        for (Car car : winnerCars.getCarItems()) {
             winnerNames.add(car.getName());
         }
-        return String.join(",", winnerNames);
+        return String.join(CarConstant.winnerNameDelimiter, winnerNames);
+    }
+
+    @Override
+    public Object clone() {
+        List<Car> cloneCarItems = new ArrayList<>();
+        for (Car car : carItems) {
+            Car cloneCar = new Car(car.getName(), car.getDistance());
+            cloneCarItems.add(cloneCar);
+        }
+        return new Cars(cloneCarItems);
     }
 }

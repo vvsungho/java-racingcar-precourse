@@ -16,7 +16,7 @@ public class CarsTest {
         // when
         Cars cars = Cars.createCars(input.split(Message.COLON)[0]);
         // then
-        assertEquals(cars.getCars().size(), Integer.parseInt(expected));
+        assertEquals(cars.getCarItems().size(), Integer.parseInt(expected));
     }
 
     @ParameterizedTest

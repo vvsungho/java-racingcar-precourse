@@ -1,9 +1,8 @@
 package racingcar.domain;
 
-public class Car {
-    public static final int MOVE_MINIMUM_VALUE = 4;
-    public static final int CAR_DISTANCE_INIT_VALUE = 0;
+import racingcar.constant.CarConstant;
 
+public class Car {
     private String name;
     private int distance;
 
@@ -21,7 +20,7 @@ public class Car {
     }
 
     public static Car createCar(String name) {
-        return new Car(name, CAR_DISTANCE_INIT_VALUE);
+        return new Car(name, CarConstant.CAR_DISTANCE_INIT_VALUE);
     }
 
     public void move(int number) {
@@ -31,6 +30,6 @@ public class Car {
     }
 
     public boolean matchMove(int distance) {
-        return distance >= MOVE_MINIMUM_VALUE;
+        return distance >= CarConstant.MOVE_MINIMUM_VALUE;
     }
 }
