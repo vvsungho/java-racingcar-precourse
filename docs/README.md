@@ -29,6 +29,7 @@
 
 <details>
     <summary>자세히</summary>
+
      • stream api 사용 금지
 
      • else 예약어 금지
