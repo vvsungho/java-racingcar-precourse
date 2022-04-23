@@ -4,14 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.constant.Message;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingGameTest {
-    public static final String COLON = ":";
-    public static final String COMMA = ",";
     private RacingGame racingGame;
 
     @BeforeEach
@@ -24,7 +23,7 @@ public class RacingGameTest {
     @CsvSource(value = {"9,1,2:yoon", "5,5,1:yoon,lee", "5,5,5:yoon,lee,kim"}, delimiter = ':')
     void validateWinnerNamesTest(String input, String expected) {
         // given
-        String[] splitCarNumber = input.split(COLON)[0].split(COMMA);
+        String[] splitCarNumber = input.split(Message.COLON)[0].split(Message.COMMA);
         List<Car> resultCar = racingGame.getResult().getCars();
 
         // when

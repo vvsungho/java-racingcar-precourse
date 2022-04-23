@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.constant.ErrorMessage;
+import racingcar.constant.Message;
 import racingcar.utils.CommonUtils;
 
 public class CarNumber {
@@ -14,12 +14,12 @@ public class CarNumber {
 
     public void validateTryCountNumber(String number) {
         if (CommonUtils.isNullOrEmptyString(number)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_NULL_OR_EMPTY);
+            throw new IllegalArgumentException(Message.ERROR_INPUT_NULL_OR_EMPTY);
         }
         try {
             Integer.parseInt(number);
         } catch (NumberFormatException numberFormatException) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_INPUT_TRY_NUMBER);
+            throw new IllegalArgumentException(Message.ERROR_INPUT_TRY_NUMBER);
         }
     }
 }

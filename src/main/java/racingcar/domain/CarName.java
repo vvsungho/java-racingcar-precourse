@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.constant.ErrorMessage;
+import racingcar.constant.Message;
 
 public class CarName {
     public static final int MAX_NAME_LENGTH = 5;
@@ -10,10 +10,10 @@ public class CarName {
         validateName(name);
         this.name = name;
     }
-    
+
     private void validateName(String name) {
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_NAME_LENGTH);
+            throw new IllegalArgumentException(Message.ERROR_NAME_LENGTH);
         }
     }
 }
