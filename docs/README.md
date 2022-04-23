@@ -30,9 +30,13 @@
 <details>
     <summary>자세히</summary>
      • stream api 사용 금지
+
      • else 예약어 금지
+
      • indent depth는 2이상 금지
+
      • 함수에 구현된 내용 10라인 초과 금지
+
 </details>
 
 ---
