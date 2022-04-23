@@ -25,8 +25,12 @@ public class Car {
 
     public void move(int number) {
         if (matchMove(number)) {
-            this.distance++;
+            increaseDistance();
         }
+    }
+
+    private void increaseDistance() {
+        this.distance++;
     }
 
     public boolean matchMove(int distance) {
