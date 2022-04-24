@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import racingcar.constant.Message;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
@@ -16,25 +15,23 @@ public class OutputView {
     public static void printRacingHistory(RacingGameHistory history) {
         for (Cars cars : history.getCarsList()) {
             printCarsInfo(cars);
-            System.out.println();
         }
     }
 
     public static void printCarsInfo(Cars cars) {
         for (Car car : cars.getCarItems()) {
-            System.out.print(car.getName());
-            System.out.print(Message.SPACING);
-            System.out.print(Message.COLON);
-            System.out.print(Message.SPACING);
-            printCarMove(car.getDistance());
-            System.out.println();
+            System.out.printf(Message.RACING_CAR_INFO, car.getName(), getCarMoveDash(car.getDistance()));
         }
+        System.out.println();
     }
 
-    public static void printCarMove(int distance) {
+    public static String getCarMoveDash(int distance) {
+        StringBuilder stringBuilder = new StringBuilder();
         while (distance-- > 0) {
-            System.out.print(Message.DASH);
+            stringBuilder.append(Message.DASH);
         }
+
+        return stringBuilder.toString();
     }
 
     public static void printMessage(String message) {
@@ -42,8 +39,6 @@ public class OutputView {
     }
 
     private static void printRacingWinner(Cars winnerCars) {
-        System.out.print(
-                Message.WINNER.replace("#{winnerName}", Cars.getWinnerNames(winnerCars.getWinnerCars()))
-        );
+        System.out.printf(Message.WINNER, Cars.getWinnerNames(winnerCars.getWinnerCars()));
     }
 }
