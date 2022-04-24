@@ -3,16 +3,16 @@ package racingcar.domain;
 import racingcar.constant.CarConstant;
 
 public class Car {
-    private final String name;
+    private final CarName carName;
     private int distance;
 
-    public Car(String name, int distance) {
-        this.name = name;
+    public Car(CarName carName, int distance) {
+        this.carName = carName;
         this.distance = distance;
     }
 
-    public String getName() {
-        return name;
+    public CarName getCarName() {
+        return carName;
     }
 
     public int getDistance() {
@@ -20,7 +20,7 @@ public class Car {
     }
 
     public static Car createCar(String name) {
-        return new Car(name, CarConstant.CAR_DISTANCE_INIT_VALUE);
+        return new Car(new CarName(name), CarConstant.CAR_DISTANCE_INIT_VALUE);
     }
 
     public void move(int number) {
@@ -29,11 +29,11 @@ public class Car {
         }
     }
 
-    private void increaseDistance() {
-        this.distance++;
-    }
-
     public boolean matchMove(int distance) {
         return distance >= CarConstant.MOVE_MINIMUM_VALUE;
+    }
+
+    private void increaseDistance() {
+        this.distance++;
     }
 }

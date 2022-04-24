@@ -1,10 +1,12 @@
 package racingcar.domain;
 
 import racingcar.constant.CarConstant;
+import racingcar.constant.Message;
 import racingcar.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Cars {
     private final List<Car> carItems;
@@ -18,8 +20,31 @@ public class Cars {
     }
 
     public static Cars createCars(String names) {
+        validateCarNames(names);
         String[] splitNames = getSplitNames(names);
         return new Cars(mapCar(splitNames));
+    }
+
+    public static String getWinnerNames(Cars winnerCars) {
+        List<String> winnerNames = new ArrayList<>();
+        for (Car car : winnerCars.getCarItems()) {
+            winnerNames.add(
+                    Optional.ofNullable(car.getCarName())
+                            .orElseThrow(() -> new IllegalArgumentException(Message.INPUT_RACING_CAR_NAMES))
+                            .getName()
+            );
+        }
+
+        return String.join(CarConstant.WINNER_NAME_DELIMITER, winnerNames);
+    }
+
+    public Cars getWinnerCars() {
+        List<Car> winnerCar = new ArrayList<>();
+        int maxDistance = getMaxDistance();
+        for (Car car : carItems) {
+            addWinnerCar(winnerCar, car, maxDistance);
+        }
+        return new Cars(winnerCar);
     }
 
     private static List<Car> mapCar(String[] splitNames) {
@@ -34,13 +59,10 @@ public class Cars {
         return names.split(CarConstant.COMMA);
     }
 
-    public Cars getWinnerCars() {
-        List<Car> winnerCar = new ArrayList<>();
-        int maxDistance = getMaxDistance();
-        for (Car car : carItems) {
-            addWinnerCar(winnerCar, car, maxDistance);
+    private static void validateCarNames(String names) {
+        if (CommonUtils.isNullOrEmptyString(names)) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_NULL_OR_EMPTY);
         }
-        return new Cars(winnerCar);
     }
 
     private int getMaxDistance() {
@@ -61,19 +83,11 @@ public class Cars {
         return car.getDistance() == maxDistance;
     }
 
-    public static String getWinnerNames(Cars winnerCars) {
-        List<String> winnerNames = new ArrayList<>();
-        for (Car car : winnerCars.getCarItems()) {
-            winnerNames.add(car.getName());
-        }
-        return String.join(CarConstant.WINNER_NAME_DELIMITER, winnerNames);
-    }
-
     @Override
     public Object clone() {
         List<Car> cloneCarItems = new ArrayList<>();
         for (Car car : carItems) {
-            Car cloneCar = new Car(car.getName(), car.getDistance());
+            Car cloneCar = new Car(car.getCarName(), car.getDistance());
             cloneCarItems.add(cloneCar);
         }
         return new Cars(cloneCarItems);

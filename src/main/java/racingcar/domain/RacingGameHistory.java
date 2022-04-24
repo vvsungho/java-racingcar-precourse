@@ -12,4 +12,8 @@ public class RacingGameHistory {
     public List<Cars> getCarsList() {
         return carsList;
     }
+
+    public void addCars(Cars cars) {
+        carsList.add(cars);
+    }
 }

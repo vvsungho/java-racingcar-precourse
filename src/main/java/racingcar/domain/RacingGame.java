@@ -42,6 +42,6 @@ public class RacingGame {
     }
 
     private void addPlayHistory(Cars cars) {
-        history.getCarsList().add(cars);
+        history.addCars(cars);
     }
 }
