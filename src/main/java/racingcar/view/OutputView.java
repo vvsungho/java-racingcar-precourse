@@ -9,7 +9,7 @@ public class OutputView {
     public static final String DASH = "-";
     public static final String RACING_RESULT = "실행 결과";
     public static final String RACING_CAR_INFO = "%s : %s\n";
-    public static final String WINNER = "최종 우승자는 %s 입니다.";
+    public static final String WINNER = "최종 우승자: %s";
 
     public static void printRacingResult(RacingGame racingGame) {
         System.out.println(RACING_RESULT);
