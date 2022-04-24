@@ -3,7 +3,7 @@ package racingcar.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.constant.Message;
+import racingcar.view.Message;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,10 +21,11 @@ class CarsTest {
 
     @ParameterizedTest
     @DisplayName("distance 결과 검증")
-    @CsvSource(value = {"A,B,C:3", "A,B:2", "A:1"}, delimiter = ':')
+    @CsvSource(value = {"9,1,2:yoon", "5,5,1:yoon, lee", "5,5,5:yoon, lee, kim"}, delimiter = ':')
     void validateExpectedDistanceTest() {
         // given
         // when
+
 
         // then
     }

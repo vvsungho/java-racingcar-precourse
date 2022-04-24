@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.constant.Message;
+import racingcar.view.Message;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ class RacingGameTest {
 
     @ParameterizedTest
     @DisplayName("우승자 선정 테스트")
-    @CsvSource(value = {"9,1,2:yoon", "5,5,1:yoon, lee", "5,5,5:yoon,lee, kim"}, delimiter = ':')
+    @CsvSource(value = {"9,1,2,4,9,2:yoon", "5,5,1:yoon, lee", "5,5,5:yoon, lee, kim"}, delimiter = ':')
     void validateWinnerNamesTest(String input, String expected) {
         // given
         String[] splitCarNumber = input.split(Message.COLON)[0].split(Message.COMMA);
@@ -28,7 +28,7 @@ class RacingGameTest {
 
         // when
         for (int i = 0; i < splitCarNumber.length; i++) {
-            Car car = resultCar.get(i);
+            Car car = resultCar.get(i % resultCar.size());
             car.move(Integer.parseInt(splitCarNumber[i]));
         }
         String result = Cars.getWinnerNames(racingGame.getResult().getWinnerCars());

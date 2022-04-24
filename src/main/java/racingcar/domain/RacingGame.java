@@ -9,7 +9,7 @@ import static racingcar.constant.CarConstant.MIN_VALUE;
 
 public class RacingGame {
     private final Cars cars;
-    private RacingGameHistory history;
+    private final RacingGameHistory history;
 
     public RacingGame(String names) {
         this.cars = Cars.createCars(names);

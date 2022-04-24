@@ -1,11 +1,11 @@
 package racingcar.domain;
 
 import racingcar.constant.CarConstant;
-import racingcar.constant.Message;
 import racingcar.utils.CommonUtils;
+import racingcar.view.Message;
 
 public class CarNumber {
-    private int number;
+    private final int number;
 
     public CarNumber(String number) {
         validateTryCountNumber(number);

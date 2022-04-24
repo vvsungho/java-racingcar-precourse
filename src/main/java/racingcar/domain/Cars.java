@@ -1,14 +1,13 @@
 package racingcar.domain;
 
 import racingcar.constant.CarConstant;
-import racingcar.constant.Message;
 import racingcar.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> carItems;
+    private final List<Car> carItems;
 
     public Cars(List<Car> carItems) {
         this.carItems = carItems;
@@ -32,7 +31,7 @@ public class Cars {
     }
 
     private static String[] getSplitNames(String names) {
-        return names.split(Message.COMMA);
+        return names.split(CarConstant.COMMA);
     }
 
     public Cars getWinnerCars() {
@@ -67,7 +66,7 @@ public class Cars {
         for (Car car : winnerCars.getCarItems()) {
             winnerNames.add(car.getName());
         }
-        return String.join(CarConstant.winnerNameDelimiter, winnerNames);
+        return String.join(CarConstant.WINNER_NAME_DELIMITER, winnerNames);
     }
 
     @Override

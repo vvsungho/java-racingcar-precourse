@@ -1,11 +1,11 @@
 package racingcar.domain;
 
 import racingcar.constant.CarConstant;
-import racingcar.constant.Message;
 import racingcar.utils.CommonUtils;
+import racingcar.view.Message;
 
 public class CarNames {
-    private String names;
+    private final String names;
 
     public CarNames(String names) {
         validateNames(names);
@@ -16,16 +16,10 @@ public class CarNames {
         return names;
     }
 
-    public boolean isValidNames(String names) {
-        try {
-            validateNames(names);
-            return true;
-        } catch (IllegalArgumentException illegalArgumentException) {
-            return false;
-        }
-    }
-
     private void validateNames(String names) {
+        if (CommonUtils.isNullOrEmptyString(names)) {
+            throw new IllegalArgumentException();
+        }
         String[] splitNames = getSplitNames(names);
         for (String name : splitNames) {
             validateName(name);
@@ -39,7 +33,6 @@ public class CarNames {
     }
 
     public static String[] getSplitNames(String names) {
-        CommonUtils.isNullOrEmptyString(names);
-        return names.split(Message.COMMA);
+        return names.split(CarConstant.COMMA);
     }
 }
