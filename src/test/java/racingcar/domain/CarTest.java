@@ -8,23 +8,23 @@ import racingcar.constant.Message;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CarTest {
+class CarTest {
     @Test
-    public void isMoveTest() {
+    void isMoveTest() {
         Car car = Car.createCar("A");
         boolean result = car.matchMove(5);
         assertTrue(result);
     }
 
     @Test
-    public void isStopTest() {
+    void isStopTest() {
         Car car = Car.createCar("A");
         boolean result = car.matchMove(3);
         assertFalse(result);
     }
 
     @Test
-    public void validateInputTryNumberTest() {
+    void validateInputTryNumberTest() {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new CarNumber("10")

@@ -10,11 +10,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RacingGameTest {
+class RacingGameTest {
     private RacingGame racingGame;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         racingGame = new RacingGame("yoon,lee,kim");
     }
 

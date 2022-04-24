@@ -7,7 +7,7 @@ import racingcar.constant.Message;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CarsTest {
+class CarsTest {
     @ParameterizedTest
     @DisplayName("Car 객체 생성 테스트")
     @CsvSource(value = {"yoon,lee,kim:3", "yoon,lee:2", "yoon:1"}, delimiter = ':')
