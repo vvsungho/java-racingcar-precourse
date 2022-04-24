@@ -4,7 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.view.Message;
+import racingcar.constant.CarConstant;
+import racingcar.constant.Constant;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,7 +39,7 @@ class CarTest {
         // given
         Car car = Car.createCar("yoon");
         // when
-        String[] moveNumberArray = input.split(Message.COLON)[0].split(Message.COMMA);
+        String[] moveNumberArray = input.split(Constant.COLON)[0].split(CarConstant.COMMA);
         for (String number : moveNumberArray) {
             car.move(Integer.parseInt(number));
         }

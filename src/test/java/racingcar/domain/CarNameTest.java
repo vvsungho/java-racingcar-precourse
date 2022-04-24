@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class CarNamesTest {
+class CarNameTest {
     @Test
     @DisplayName("자동차 이름 입력 예외 테스트")
     void validateInputNameThrowTest() {
